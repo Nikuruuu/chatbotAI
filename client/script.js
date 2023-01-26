@@ -76,11 +76,10 @@ const handleSubmit = async (e) => {
   loader(messageDiv);
   //fetch data from server side
   
-  const response = await fetch('https://jcodex.onrender.com', {
+  const response = await fetch ('https://jcodex.onrender.com', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ${process.env.OPENAI_SECRET_KEY}'
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       prompt: data.get('prompt')
