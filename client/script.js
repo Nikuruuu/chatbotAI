@@ -79,7 +79,8 @@ const handleSubmit = async (e) => {
   const response = await fetch('http://localhost:5000', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ${process.env.OPENAI_SECRET_KEY}'
     },
     body: JSON.stringify({
       prompt: data.get('prompt')
@@ -97,16 +98,15 @@ const handleSubmit = async (e) => {
   } else {
     const err = await response.text();
 
-    messageDiv.innerHTML = "Naay Mali Brad!"
+    messageDiv.innerHTML = "Naay Mali Brad! Usaba"
 
     alert(err);
   }
   }
 
-
-form.addEventListener('submit', handleSubmit);
-form.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13) {
-    handleSubmit(e);
-  }
-})
+  form.addEventListener('submit', handleSubmit)
+  form.addEventListener('keyup', (e) => {
+      if (e.keyCode === 13) {
+          handleSubmit(e)
+      }
+  })
